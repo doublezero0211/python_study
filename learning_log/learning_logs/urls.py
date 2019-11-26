@@ -14,6 +14,8 @@ urlpatterns = [
         path('new_topic/', views.new_topic, name='new_topic'),
         # 添加新条目的网页
         path('new_entry/<topic_id>/', views.new_entry, name='new_entry'),
+        # 编辑条目
+        path('edit_entry/<entry_id>', views.edit_entry, name='edit_entry'),
 
 ]
 

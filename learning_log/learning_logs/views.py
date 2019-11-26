@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-from .models import Topic
+from .models import Topic, Entry
 from .forms import TopicForm, EntryForm
 
 # Create your views here.
@@ -53,3 +53,21 @@ def new_entry(request, topic_id):
             return HttpResponseRedirect(reverse('learning_logs:topic', args=[topic_id])) #重定向到页面topic
     context = {'topic': topic, 'form': form}
     return render(request, 'learning_logs/new_entry.html', context)
+
+def edit_entry(request, entry_id):
+    """编辑条目"""
+    entry = Entry.objects.get(id=entry_id) #获取要修改的条目对象
+    topic = entry.topic #获取与条目关联的主题
+    if request.method != 'POST':
+        # 初次请求，使用当前条目填充表单
+        form = EntryForm(instance=entry) #使用实参instance=entry创建一个EntryForm实例，创建一个表单
+    else:
+        # POST提交数据，对数据进行处理
+        form = EntryForm(instance=entry, data=request.POST) #同上，并根据request.POST中的数据修改
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('learning_logs:topic', args=[topic.id]))
+    context = {'entry': entry, 'topic': topic, 'form': form}
+    return render(request, 'learning_logs/edit_entry.html', context)
+
+
