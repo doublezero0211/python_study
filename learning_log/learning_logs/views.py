@@ -60,6 +60,9 @@ def new_entry(request, topic_id):
             # 创建一个新的条目对象，存储到变量new_entry，不保存到数据库中
             new_entry = form.save(commit=False)# 传递实参commit=False
             new_entry.topic = topic 
+            check_topic_owner(new_entry.topic.owner, request)
+            # if new_entry.topic.owner != request.user:
+            #     print("It's not your entry so you cannot edit it...")
             new_entry.save() #将表单的数据写入数据库
             return HttpResponseRedirect(reverse('learning_logs:topic', args=[topic_id])) #重定向到页面topic
     context = {'topic': topic, 'form': form}

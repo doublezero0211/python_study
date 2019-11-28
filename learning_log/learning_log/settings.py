@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # 第三方应用程序
+    'bootstrap3',
     # 我的应用程序
     'learning_logs',
     'users'
@@ -124,5 +126,9 @@ STATIC_URL = '/static/'
 
 # 我的设置
 LOGIN_URL = '/users/login/'
+LOGIN_REDIRECT_URL = '/'
 SILENCED_SYSTEM_CHECKS = ['fields.E300', 'fields.E307']
-
+# diango-bootstrap3的设置
+BOOTSTRAP3 = {
+        'include_jquery': True,
+        }
