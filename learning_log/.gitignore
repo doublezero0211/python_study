@@ -1,7 +1,10 @@
 #
 ll_enc/
+__pycache__/
 zz_env/
 mp_env/
+
+*.sqlite3
 
 # Compiled class file
 *.class
