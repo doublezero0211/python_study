@@ -2,6 +2,8 @@
 ll_env/
 zz_env/
 mp_env/
+*.sqlite3
+
 
 # Compiled class file
 *.class
