@@ -1,0 +1,4 @@
+   up键的event.key = 273
+ down键的event.key = 274
+right键的event.key = 275
+ left键的event.key = 276
