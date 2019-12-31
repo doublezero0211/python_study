@@ -1,0 +1,17 @@
+用模块管理函数
+
+Python中，每个文件，代表一个模块 - module
+
+导入的模块，除了定义函数之外，还可以执行代码
+如果在模块中，编写了执行代码，最好放入 if __name__ = '__main__': 中
+这样的话，除非直接运行该模块，if条件下的这些代码是不会执行的
+
+python代码格式
+
+def main():
+  # Todo: add your code here
+  pass
+
+
+if __name__ = '__main__':
+  main()
